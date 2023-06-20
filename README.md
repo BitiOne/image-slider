@@ -13,7 +13,7 @@ An image gallery using HTML, CSS and JavaScript, for practice DOM manipulation.
 
 ### Screenshot
 
-![Image text](https://www.united-internet.de/fileadmin/user_upload/Brands/Downloads/Logo_IONOS_by.jpg)
+!nothing now
 
 ## Technologies
 
