@@ -34,7 +34,7 @@ body {
   flex-direction: row;
 }
 
-.arrow {
+.left-arrow {
   width: 50px;
   height: 100%;
   background-image: url("./images/arrow.svg");
@@ -42,7 +42,12 @@ body {
   background-position: center;
 }
 
-.right {
+.right-arrow {
+  width: 50px;
+  height: 100%;
+  background-image: url("./images/arrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
   transform: rotate(180deg);
 }
 
