@@ -27,6 +27,7 @@ function loadImages () {
       newDiv03.className = `selected-small-image-container`;
       newDiv04.className = `small-image-div`;
   
+      newDiv03.id = `small-image-container-${i < 9 ? (i + 1) : (i + 1)}`;
       newDiv04.id = `small-image-${i < 9 ? '0' + (i + 1) : (i + 1)}`;
       newDiv04.style.setProperty(`background-image`, `url("./images/${i < 9 ? '0' + (i + 1) : (i + 1)}.jpg")`)
   
@@ -41,6 +42,7 @@ function loadImages () {
   
       newDiv01.className = `small-image-container`;
   
+      newDiv01.id = `small-image-container-${i < 9 ? (i + 1) : (i + 1)}`;
       newDiv02.id = `small-image-${i < 9 ? '0' + (i + 1) : (i + 1)}`;
       newDiv02.className = `small-image-div`;
       newDiv02.style.setProperty(`background-image`, `url("./images/${i < 9 ? '0' + (i + 1) : (i + 1)}.jpg")`)
@@ -50,29 +52,23 @@ function loadImages () {
       smallImagesMainContainer.appendChild(newDiv01);
     }
   }
+  clickSmallImages();
 }
 
 window.addEventListener(`load`, () => {
   loadImages();
+
 })
 
 leftArrow.addEventListener(`click`, () => {
   if (activeImage === 0) {
     activeImage = 9;
 
-    let removableChild = document.querySelector(`#small-images-main-container`);
-
-    container.removeChild(removableChild);
-
-    loadImages();
+    resetSmallImagesContainer();
   } else {
     activeImage --;
 
-    let removableChild = document.querySelector(`#small-images-main-container`);
-
-    container.removeChild(removableChild);
-
-    loadImages();
+    resetSmallImagesContainer();
   }
 });
 
@@ -80,18 +76,45 @@ rightArrow.addEventListener(`click`, () => {
   if (activeImage === 9) {
     activeImage = 0;
 
-    let removableChild = document.querySelector(`#small-images-main-container`);
-
-    container.removeChild(removableChild);
-
-    loadImages();
+    resetSmallImagesContainer();
   } else {
     activeImage ++;
 
-    let removableChild = document.querySelector(`#small-images-main-container`);
-
-    container.removeChild(removableChild);
-
-    loadImages();
+    resetSmallImagesContainer();
   }
 });
+
+function resetSmallImagesContainer() {
+  let removableChild = document.querySelector(`#small-images-main-container`);
+
+  container.removeChild(removableChild);
+
+  loadImages();
+  clickSmallImages();
+};
+
+function clickSmallImages() {
+  const smallImageContainer = document.querySelectorAll(`.small-image-container`);
+
+  for (let i = 0; i < smallImageContainer.length; i++) {
+    smallImageContainer[i].addEventListener(`click`, (event) => {
+      let imageNumberString = [];
+      let imageNumber;
+
+      imageNumberString = event.target.id.split(`-`);
+      if (imageNumberString.length === 3) {
+        imageNumber = Number(imageNumberString[2] - 1);
+      } else {
+        imageNumber = Number(imageNumberString[3] - 1);
+      }
+
+      activeImage = imageNumber;
+
+      let removableChild = document.querySelector(`#small-images-main-container`);
+
+      container.removeChild(removableChild);
+
+      loadImages();
+    });
+  };
+};
