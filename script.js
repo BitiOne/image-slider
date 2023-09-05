@@ -24,7 +24,7 @@ function loadImages () {
   
       newDiv01.className = `small-image-container-with-arrow`;
       newDiv02.className = `arrow-up`;
-      newDiv03.className = `selected small-image-container`;
+      newDiv03.className = `selected-small-image-container`;
       newDiv04.className = `small-image-div`;
   
       newDiv04.id = `small-image-${i < 9 ? '0' + (i + 1) : (i + 1)}`;
@@ -67,6 +67,26 @@ leftArrow.addEventListener(`click`, () => {
     loadImages();
   } else {
     activeImage --;
+
+    let removableChild = document.querySelector(`#small-images-main-container`);
+
+    container.removeChild(removableChild);
+
+    loadImages();
+  }
+});
+
+rightArrow.addEventListener(`click`, () => {
+  if (activeImage === 9) {
+    activeImage = 0;
+
+    let removableChild = document.querySelector(`#small-images-main-container`);
+
+    container.removeChild(removableChild);
+
+    loadImages();
+  } else {
+    activeImage ++;
 
     let removableChild = document.querySelector(`#small-images-main-container`);
 
