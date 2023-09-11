@@ -37,7 +37,7 @@ let imagesDatas = [
   {
     id: 8,
     title: 'Image 8',
-    description: `Spring has arrived, and I couldn't be happier! Stumbled upon a serene landscape today—a vast field covered in vibrant green grass, dotted with majestic trees. Simply breathtaking!0`  },
+    description: `Spring has arrived, and I couldn't be happier! Stumbled upon a serene landscape today—a vast field covered in vibrant green grass, dotted with majestic trees. Simply breathtaking!`  },
   {
     id: 9,
     title: 'Image 9',
