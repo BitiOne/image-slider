@@ -1,8 +1,11 @@
+import imagesDatas from "./images-data.js";
+
 const bigImageContainer = document.querySelector('#big-image');
 const container = document.querySelector(`#container`);
 const leftArrow = document.querySelector(`.left-arrow`);
 const rightArrow = document.querySelector(`.right-arrow`);
-const imagesArray = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg'];
+const header = document.querySelector(`h4`);
+const paragraph = document.querySelector(`p`);
 
 let activeImage = 0;
 
@@ -14,7 +17,7 @@ function loadImages () {
 
   bigImageContainer.style.setProperty(`background-image`, `url("./images/${activeImage < 9 ? '0' + (activeImage + 1) : (activeImage + 1)}.jpg")`);
 
-  for (let i = 0; i < imagesArray.length; i++) {
+  for (let i = 0; i < imagesDatas.length; i++) {
     
     if (i === activeImage) {
       let newDiv01 = document.createElement(`div`);
@@ -36,6 +39,9 @@ function loadImages () {
       newDiv03.appendChild(newDiv04);
   
       smallImagesMainContainer.appendChild(newDiv01);
+
+      header.innerText = imagesDatas[i].title;
+      paragraph.innerText = imagesDatas[i].description;
     } else {
       let newDiv01 = document.createElement(`div`);
       let newDiv02 = document.createElement(`div`);
